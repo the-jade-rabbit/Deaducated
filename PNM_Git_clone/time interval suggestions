@@ -1,0 +1,33 @@
+""One possible way to implement a time interval counter in Python that resets every 24 hours is to
+  	use the time module to measure the elapsed time between 
+  two points and compare it with the desired interval. For example:""
+import time
+
+interval = 24 * 60 * 60 # 24 hours in seconds
+start = time.time() # current time in seconds
+
+# do something ...
+
+end = time.time() # current time in seconds
+elapsed = end - start # elapsed time in seconds
+
+if elapsed >= interval:
+    # reset the counter and do something else ...
+    start = time.time()
+"""You can also use the Timer class from the threading module to create a timer that 
+  executes a function after a certain interval. For example: """
+
+import threading
+
+interval = 24 * 60 * 60 # 24 hours in seconds
+
+def timeout():
+    # do something ...
+    print("time out!")
+
+# create a timer that calls timeout after interval seconds
+T = threading.Timer(interval, timeout)
+T.start()
+
+# cancel the timer if needed
+T.cancel()
