@@ -2,3 +2,290 @@
 ##
 ## [code starts here]
 ##
+""" A fancy tic-tac-toe game for CSSE1001/7030 A1. """
+from constants import *
+
+Board = list[list[str]]
+Pieces = list[int]
+Move = tuple[int, int, int]
+# Write your functions here
+def num_hours() -> float:
+    "returns number of hours spent on assignment 1 as a float"
+    hours_spent = float(168)
+    return hours_spent
+
+
+def generate_initial_pieces(num_pieces: int):
+    " Takes a number of pieces and returns a list of 1 to and including the number of pieces"
+    
+    
+    Pieces = list(range(1, num_pieces + 1))
+    
+    return Pieces
+
+def initial_state():
+    "Returns a new Board with EMPTY in row and column position"
+    
+    Board = []
+    board1 = [EMPTY, EMPTY, EMPTY]
+    board2 = [EMPTY, EMPTY, EMPTY]
+    board3 = [EMPTY, EMPTY, EMPTY]
+    Board.append(board1)
+    Board.append(board2)
+    Board.append(board3)
+    
+    return Board
+
+    
+    
+def place_piece(board: Board, player: str, pieces_available: Pieces, move: Move ) -> None:
+    ""
+    #Player = Naught or Cross
+    #Board = initial_state()
+    #Pieces_available = generate_initial_pieces(num_pieces)
+    #move is a tuple containing(row,column,piece size)
+    
+    #split the move into row, col, value
+    row, col, size = move   
+
+    marker = player + str(size) #make marker to be placed as player + value
+
+    #make the actual move onto the board in the row and col
+    board[row][col] = marker
+    
+    #remove the size of marker used from pieces
+    pieces_available.remove(size)
+    
+    return
+def print_game(board: Board, naught_pieces: Pieces, cross_pieces: Pieces) -> None:
+    ""
+    O_pieces = ''
+    X_pieces = ''
+    for i in naught_pieces:
+        i = str(i)
+        O_pieces += i
+    for i in cross_pieces:
+        i = str(i)
+        X_pieces += i
+        
+    # Format Naught's and Cross's pieces by seperating string by ", "
+    Opieces = ', '.join(O_pieces)
+    Xpieces = ', '.join(X_pieces)
+
+    # Give number of rows and columns of the board values for the user-friendly format
+    num_rows = len(board)
+    num_cols = len(board)
+    
+    # Create header and initial separator
+    header = "   " + "  ".join(str(i + 1)for i in range(num_cols))
+    separator = " " + "-" * (GRID_SIZE * num_cols)
+
+    
+    # Print each players pieces    
+    print(NAUGHT,'has:', Opieces)
+    print(CROSS,'has:', Xpieces)
+    
+    # Print empty line space
+    print()
+    
+    # Print header and first seperator
+    print(header)
+    print("", separator)
+
+    for row_id, row in enumerate(board):
+        #create each board row and seperate cells by |
+        row_str = (
+            str(row_id + 1)
+            + "|" + "|".join(cell if cell else " "
+            * GRID_SIZE for cell in row) + "|"
+            )
+        #print each row followed by a line of seperators
+        print(row_str)
+        print("", separator)
+    
+    return
+
+
+def get_player_move():
+    ""
+    # Prompt player to enter move
+    while True:
+        player_input = input("Enter your move: ")
+        if player_input == "h" or player_input == "H":
+            print(HELP_MESSAGE)
+            continue
+        move_format = player_input.split()
+        
+        # Check for invalid move format
+        if len(move_format) != 3:
+            print(INVALID_FORMAT_MESSAGE)
+            continue
+        
+        if not move_format[0].isdigit() or not move_format[1].isdigit() or not move_format[2].isdigit():
+            print(INVALID_FORMAT_MESSAGE)
+            continue
+            
+        # convert index value to integer    
+        row = int(move_format[0])
+        col = int(move_format[1])
+        size = int(move_format[2])
+        
+        # Check for invalid row
+        if row < 1 or row > 3:
+            print(INVALID_ROW_MESSAGE)
+            continue
+        
+        # Check for invalid column
+        if col < 1 or col > 3:
+            print(INVALID_COLUMN_MESSAGE)
+            continue
+        
+        # Check for invalid size
+        if size < 1 or size > PIECES_PER_PLAYER:
+            print(INVALID_SIZE_MESSAGE)
+            continue
+        
+        # put row, column and size 
+        Move = row - 1, col - 1, size
+        
+        # Return player's move
+        return Move
+    
+    pass
+
+def process_move(move: str):
+    ""
+    # Split move into row, column  and size by space
+    move_format = move.split()
+
+    # Check for invalid move 
+    if len(move) != 5:
+        print(INVALID_FORMAT_MESSAGE)
+        return
+    # Check invalid move format
+    if len(move_format) != 3:
+        print(INVALID_FORMAT_MESSAGE)
+        return 
+    # Check if value at [0] is number
+    if not move_format[0].isdigit():
+        print(INVALID_ROW_MESSAGE)
+        return
+    # Check if value at [1] is a number
+    if not move_format[1].isdigit():
+        print(INVALID_COLUMN_MESSAGE)
+        return
+    # Check if value at [2] is a number
+    if not move_format[2].isdigit():
+        print(INVALID_SIZE_MESSAGE)
+        return
+        
+    # convert index value to integer    
+    row = int(move_format[0])
+    col = int(move_format[1])
+    size = int(move_format[2])
+    
+    # Check for invalid row
+    if row < 1 or row > 3:
+        print(INVALID_ROW_MESSAGE)
+        return
+    
+    # Check for invalid column
+    if col < 1 or col > 3:
+        print(INVALID_COLUMN_MESSAGE)
+        return
+    
+    # Check for invalid size
+    if size < 1 or size > PIECES_PER_PLAYER:
+        print(INVALID_SIZE_MESSAGE)
+        return
+    
+    # put row, column and size 
+    Move = row - 1, col - 1, size
+    
+    # Return player's move
+    return Move
+
+    
+def check_move(board: Board, pieces_available: Pieces, move: Move) -> bool:
+    ""
+    # Assign row, column and size to the move tuple index respectively
+    row, col, size = move
+    # Get the piece at the intended move position
+    position = board[row][col]
+    # Check if position is not empty
+    if position != EMPTY:
+        # Get the piece size from the player marker at position and convert to integer
+        piece_size = int(position[1])
+        # Check if piece size at the position is greater than or equal to move size
+        if piece_size >= size:
+            return False
+    # Check if the move size is in pieces avalable
+    if size not in  pieces_available:
+        return False
+    # Move is valid if it passes all the checks
+    return True
+
+def check_win(board: Board):
+    ""
+    # Check for win in rows
+    for row in board:
+        if all(cell[0] == row[0][0] and cell != EMPTY for cell in row):
+            # Return the player who won
+            return row[0][0]  
+    
+    # Check for win in columns
+    for col in range(len(board[0])):
+        if all(row[col][0] == board[0][col][0] and row[col] != EMPTY for row in board):
+            # Return the player who won
+            return board[0][col][0]  
+    
+    # Check for win in diagonals
+    if all(board[i][i][0] == board[0][0][0] and board[i][i] != EMPTY for i in range(len(board))):
+        # Return the player who won
+        return board[0][0][0]  
+    elif all(board[i][len(board) - i - 1][0] == board[0][len(board) - 1][0] and board[i][len(board) - i - 1] != EMPTY for i in range(len(board))):
+        # Return the player who won
+        return board[0][len(board) - 1][0]  
+    
+    return None  # No winner found
+
+def check_stalemate(board: Board, naught_pieces: Pieces, cross_pieces: Pieces) -> bool:
+    ""
+    if not naught_pieces and not cross_pieces:
+        # no available pieces so is a stalemate
+        return True
+    
+    for row in board:
+        for cell in board:
+            # Check if cell is empty 
+            if cell == EMPTY:
+                #not stalemate
+                return False
+    #check for largest piece
+    m_naught = max(naught_pieces)
+
+    m_cross = max(cross_pieces)
+    
+    #check if each player's largest piece is greater than current piece
+    for row in board:
+        for cell in row:
+            if int(cell[1]) < m_naught or int(cell[1]) < m_cross:
+                # not stalemate
+                return False
+            
+    return True
+                       
+                
+
+
+
+def main() -> None:
+    # Write your main code here
+    num_pieces = PIECES_PER_PLAYER
+    naught_pieces = generate_initial_pieces(num_pieces)
+    pass
+
+
+if __name__ == '__main__':
+    main()
+
