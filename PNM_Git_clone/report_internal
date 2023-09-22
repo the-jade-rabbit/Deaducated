@@ -15,9 +15,49 @@ Needless to say, some of the more prominent issues will persist, and have been a
 
 
 
+
+
+
+
+
+
+
+WEEK 06
+---------
+After modifiying the Core data structure to utiise the Python 3 dataclass libraray, the first step i took to test and implement these changes was with the IP packet loss module. 
+
+
+
+
+
+
 Structure to follow (delete on completion)
 - intro to onboarding cycle(s)
 - RFC standard entries of note
 - intro to IP Packet measurement methodologies (OWAMP/TWAMP)
 - brief over view of OWPMP and how it differs to OWAMP
-- 
+- week by week progress on what i implemented
+- state hurdles encountered during imlplementation 
+-- week 02 : implemented unitt test for measurement, measurement interface, config_color_markera nd two-rate-three color marker modules
+            made corrections to color rate marker module (yellow bucket was getting filled with wrong packets due to incorrect logic) and data rate calculator 
+-- week 03 : finished implementing unittest for the modules mentuioned above and the data rate module,
+            moved the unittests to a seperate module out side thier parent class modules.
+-- week 04 : started implementatio of ip packet loss detection module, completed first draft implementation
+            implemented unittest for the loss conditions.
+-- week 05 : started implementing packet delay module, partially completed first draft implementation. 
+            implemented uittest for the delay calculation.
+            - the difficulty in working wiht dictionaries when running such calculations became more pronounced.
+-- week 06 : hit a wall with the calculation for delay, inflection point occured. We decided to convert our data structure containing the relevant packet information
+            from a dictionary to a dataclass.
+            - The need for tracking "potentially missing packets" during loss calculation was realised.
+            - Two potential solutions presented itself 1.) using an obsever pattern 2.) using list comprehension.
+            - implementation of data class for ip packets started.
+            - implementation for observer pattern started 
+            - suspended delay module.
+-- week 07 : completed dataclass implementation.
+            implemented unittest for dataclass module.
+            - observer pattern turned out to be unecessaryliy complex fo the task at hand (logging skipped packets via UID check)
+            - switched to list comprehension to solve the problem. it worked! and was monumentally easier.
+            - started conversion of exiting modules, first with packet loss, to utilise the dataclass means, resulting in an almost total redesing but not quite.
+            - started Documentation for the methodology in corresponding RFC drafts. Loss measurement first
+-- week 08 : 
