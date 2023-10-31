@@ -52,7 +52,9 @@ Structure to follow (delete on completion)
             - The need for tracking "potentially missing packets" during loss calculation was realised.
             - Two potential solutions presented itself 1.) using an obsever pattern 2.) using list comprehension.
             - implementation of data class for ip packets started.
-            - implementation for observer pattern started 
+            - implementation for observer pattern started.
+            - float point issues arrising due precision requirements. Fix realised was using the Decimal module to maintain precision.
+            - debate on wether to pass the decimal part reported in nano seconds as a string or divide by 1 billion. [the latter was decided on simply out of prefrence] 
             - suspended delay module.
 -- week 07 : completed dataclass implementation.
             implemented unittest for dataclass module.
@@ -60,4 +62,37 @@ Structure to follow (delete on completion)
             - switched to list comprehension to solve the problem. it worked! and was monumentally easier.
             - started conversion of exiting modules, first with packet loss, to utilise the dataclass means, resulting in an almost total redesing but not quite.
             - started Documentation for the methodology in corresponding RFC drafts. Loss measurement first
--- week 08 : 
+-- week 08 : completed conversion of Loss measurement class to utilise the new dataclass standard.
+            - included the distinction from loss due to delay, total loss and packet reordering, in the results list.
+            - switched from using receive times to determine loss, to using transmit times.
+            - implemnted a record list of skipped packets (UID) to allow tracking of delay-loss for skipped packets should said packets be out of order.
+            - if a packet goes into said list of 'skipped packets' then their re-order flag is automatically set to 1 [TRUE].
+            - made changes to RFC docs on loss algorithim.
+            - 
+-- week 09 : Started setting up the network simulator on air gapped machine running Debian.
+            - intital steps involved updating the system and sys level dependencies from 11 bullseye to 12 bookworm [12.2.0]
+            - major limitation due to having zero network access on the Debian Machine. Everything had to be transfered via flash from my main computewre with network access.
+            - set up a WSL [Debian 12] on my networked computer to allow downloading adn configuring required .deb packages, before transfering to the AG(air-gapped) machine. (consider a process description)
+            - selected Core [COMMON OPEN REASERCH NETWORK EMULATOR] as the preferred emulation software to use.
+            - {Debian GUI crashed allong the way. FUll reinstall was required}
+            - Ran into post intallation issues of whixh the most prominent was trying to update the sys packages using debians package manager APT/APT-GET. The issue stemmed from post installation process listing 'CDROM: [Debian 12...] bookworm stable main' in apt's sources.list as the go to location for updating the package list.
+            - CD's werernt actually used in DEB-12 installation, more so a flashdrive burned with but fix reuired a bit of a maneuver 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
