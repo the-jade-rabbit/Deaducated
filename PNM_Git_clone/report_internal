@@ -76,7 +76,7 @@ Structure to follow (delete on completion)
             - selected Core [COMMON OPEN REASERCH NETWORK EMULATOR] as the preferred emulation software to use.
             - {Debian GUI crashed allong the way. FUll reinstall was required}
             - Ran into post intallation issues of whixh the most prominent was trying to update the sys packages using debians package manager APT/APT-GET. The issue stemmed from post installation process listing 'CDROM: [Debian 12...] bookworm stable main' in apt's sources.list as the go to location for updating the package list.
-            - CD's werernt actually used in DEB-12 installation, more so a flashdrive burned with but fix reuired a bit of a maneuver 
+            - CD's werernt actually used in DEB-12 installation, more so a flashdrive with the .iso image burned to it but fix required a bit of a maneuver
 
 
 
