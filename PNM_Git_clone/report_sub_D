@@ -1,0 +1,42 @@
+Internet Protocol (IP):
+The Internet Protocol (IP) is a fundamental communication protocol that facilitates the transmission of data across interconnected networks. It operates at the network layer of the OSI model and is responsible for addressing and routing packets of data so that they can travel across networks and arrive at the correct destination.
+
+Key Characteristics of IP:
+Addressing: IP uses unique numerical identifiers called IP addresses to distinguish devices on a network. IPv4 (Internet Protocol version 4) and IPv6 (Internet Protocol version 6) are the two major versions of IP.
+
+Packet Switching: IP breaks data into packets for efficient transmission. Each packet contains both data and control information, including source and destination IP addresses.
+
+Routing: IP routers use routing tables to determine the best path for forwarding packets. This enables data to traverse multiple networks to reach its destination.
+
+RFC 791 - Internet Protocol - DARPA Internet Program Protocol Specification:
+RFC 791 is a foundational document that defines the Internet Protocol version 4 (IPv4). Published in September 1981, it outlines the structure of IPv4 packets and the rules for addressing, routing, and fragmenting data for transmission over the Internet.
+
+Key elements specified in RFC 791 include:
+
+Packet Format: Describes the structure of an IP packet, including the header fields used for addressing, type of service, time-to-live, and protocol.
+
+Addressing: Details the format of IPv4 addresses and how they are used to identify source and destination devices.
+
+Fragmentation and Reassembly: Defines how large packets can be fragmented into smaller units for transmission and how they are reassembled at the destination.
+
+Network Measurement:
+Network measurement involves assessing the performance and characteristics of a network. Various Key Performance Indicators (KPIs) are used to quantify the quality and efficiency of network communication.
+
+Key Performance Indicators (KPIs):
+Data Rate:
+
+Definition: The speed at which data is transmitted over the network.
+RFC Reference: RFC 791 does not explicitly define data rate but provides the framework for the transmission of data.
+Color Marker (RFC 2698 - A Two Rate Three Color Marker):
+
+Definition: A traffic policing mechanism that marks packets based on their conformance to specified rates and colors (green, yellow, or red).
+RFC Reference: RFC 2698 outlines the Two Rate Three Color Marker algorithm for marking packets.
+Packet Loss (RFC 2680 - A Round-trip Delay Metric for IPPM):
+
+Definition: The percentage of transmitted packets that do not reach their destination.
+RFC Reference: RFC 2680 introduces a round-trip delay metric but also discusses packet loss as part of the performance measurement.
+Packet Delay (RFC 2679 - A One-way Delay Metric for IPPM):
+
+Definition: The time it takes for a packet to travel from the source to the destination.
+RFC Reference: RFC 2679 defines one-way delay metrics for assessing the delay characteristics of a network.
+These KPIs help network administrators and engineers assess and optimize the performance of networks, ensuring reliable and efficient data transmission. The mentioned RFCs provide standards and methodologies for implementing specific aspects of network measurement.
