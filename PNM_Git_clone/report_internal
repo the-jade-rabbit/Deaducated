@@ -101,6 +101,15 @@ Initialize the class with values for CIR, CBS, PIR, PBS according to
  else
  o the packet is green and both Tp and Tc are decremented by B.
 
+    
+        network_timeout -- maximum amount of time required for a packet to arrive after
+                           transmission, before it is flagged as lost.
+        max_uid         -- the maximum number of integers a 16 bit counter can represent,
+                           This emans that when adding UID numbers to the _waiting_list,
+                           0 is incluseive, and 65536 is excluded as it is the upper boundary.
+        direction       -- indicates what type of packets the calculations are done with,
+                           due to most calclulations only possible on the receiveing host machine,
+                           the default is set to 'receive'.
 ##############################
 ##############################
 
