@@ -62,7 +62,13 @@ Measurement(MeasurementInterface) : This serves as a base class for each measure
 Core Data : This is the dataclass for the core data used as input from the various measuremnts through the input_datum function mentioned above.
 the data are fed to the instance upon initialisation, throwing exceptions when rules for proper data representations are violated .All timestamps are with regards to the UNIX epoch 
 
+The following entries are then prepared automatically for use by the
+    measurement algorithms.
 
+    transmit_start -- start of transmission time as decimal number
+    transmit_end -- end of transmission time as decimal number
+    receive_start -- start of reception time as decimal number
+    receive_end -- end of reception time as decimal number
  
 
 ##############################
