@@ -70,6 +70,36 @@ The following entries are then prepared automatically for use by the
     receive_start -- start of reception time as decimal number
     receive_end -- end of reception time as decimal number
  
+ """
+    IP data rate measurement according to RFC 5136.
+
+    Measurement results are returned as tuples (timestamp, data_rate) in the
+    results list.
+Initialize the IP date rate measurement.
+
+        measurement_interval -- duration of the measurement interval in
+            seconds, default 1.0 second.
+        direction -- measurement direction, transmit or receive. Determines
+            what data is taken from the measurement datum for the
+            measurement.
+
+        returns: class instance
+    """
+color marker 
+Color marker
+Initialize the class with values for CIR, CBS, PIR, PBS according to
+        RFC 2698.
+
+        CIR -- Committed Information Rate in bits/s.
+        CBS -- Committed Burst Size in bits.
+        PIR -- Peak Information Rate in bits/s.
+        PBS -- Peak Burst Size in bits.
+
+        
+ If Tp(t)-B < 0, the packet is red, else
+ o if Tc(t)-B < 0, the packet is yellow and Tp is decremented by B,
+ else
+ o the packet is green and both Tp and Tc are decremented by B.
 
 ##############################
 ##############################
