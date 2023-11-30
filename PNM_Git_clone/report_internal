@@ -1,9 +1,50 @@
 "" this documment is my report for my time interning at Siemens. updated weekly ""
 
+
+
 During the first week that I worked for Siemens mobility AG, I participated in an orientation called "onboarding." During this period, I became familiar with the business grounds, the rules of the firm, my coworkers, and my work station. I was informed, for the most part, as to where I should go for certain questions and who I should speak with regarding certain questions and where I should go for certain questions. In addition to this, I was provided with a work computer on which I was tasked with setting up both my credentials to obtain Local Admin Rights and a developer environment for the IXL project. I was also given the responsibility of setting up the machine myself. Because there were complications with the onboarding procedure that caused the entire process to be drawn out longer than expected, it took a week to complete the formalities that were indicated above, including setting up my work station. In spite of this, at the end of the first week, it was a success in the sense that I was finally able to access the fundamental software required for day-to-day activities such as email, the company portal, and the Siemens code repository. This was a sign that it had been partially successful.
 
 
 I was given my first assignment not long after the beginning of the second week. This task required me to become familiar with the theory that governs the framework for building up the baseline measurement techniques. This theory encompasses a number of RFC entries (request for comment) that have been published by the IEFT community. RFC 791 (IP SPECIFICATION), RFC 4656 (ONE WAY ACTIVE MEASUREMENT PROTOCOL), RFC 2679 (ONE WAY PACKET DELAY), RFC 2680 (ONE WAY PACKET LOSS), RFC 5136 (IP NETWORK CAPACITY), and RFC 2698 (TWO RATE THREE COLOR MARKER) are a few of the entries that deserve special mention for their significance. A number of these entries   provide several techniques of actively measuring and monitoring network traffic; nevertheless, there are caveats that one must take into account because there are a variety of constraints that arise at the various network layers. When putting these approaches, which are described in the RFCs, into practice, one needs to take into account the limitations that are present at that layer as well as the heuristics that applied to circumvent these obstacles. By evalauting these KPI's, we can determine the Perfomance of the network.
+
+The Internet technology (IP) is a crucial communication technology that enables the transfer of data between interconnected networks. It functions at the network layer of the OSI model and is accountable for the addressing and routing of data packets, ensuring their successful transmission across networks to the intended destination.
+
+IP has a key characteristic known as addressing, which involves the use of distinct numerical identifiers called IP addresses to differentiate devices inside a network. IPv4 and IPv6 are the primary iterations of the Internet Protocol (IP).
+
+Packet switching is a process in which IP (Internet Protocol) divides data into smaller units called packets to facilitate efficient transmission. Every packet comprises data and control information, encompassing source and destination IP addresses.
+
+Routing: IP routers utilise routing tables to ascertain the optimal route for transmitting packets. This allows data to pass via different networks in order to reach its intended destination.
+
+RFC 791, titled "Internet Protocol - DARPA Internet Programme Protocol Specification," serves as a fundamental document that establishes the specifications for Internet Protocol version 4 (IPv4). Released in September 1981, it delineates the composition of IPv4 packets and the regulations governing the allocation of addresses, routing, and fragmentation of data for transmission across the Internet.
+
+The RFC 791 specifies several essential components:
+
+The packet format defines the arrangement of an IP packet, encompassing the header fields that are utilised for addressing, kind of service, time-to-live, and protocol.
+
+Subject: Explanation of IPv4 address format and its use in device identification.
+
+Fragmentation and reassembly refer to the process of breaking down big packets into smaller components for transmission and then reconstructing them at the destination.
+
+Network measurement is the process of evaluating the performance and attributes of a network. Multiple Key Performance Indicators (KPIs) are employed to measure the quality and efficiency of network communication.
+
+Key Performance Indicators (KPIs): Data Rate:
+
+Definition: Network bandwidth refers to the rate at which data is transferred or communicated via a network.
+RFC Reference: While RFC 791 does not expressly specify the data rate, it does establish the structure for data transfer.
+Colour Marker (RFC 2698 - A Two Rate Three Colour Marker) refers to a specific method of marking packets based on their traffic characteristics.
+
+Definition: Traffic policing is a technique that assigns packets a colour (green, yellow, or red) based on their adherence to predetermined rates.
+RFC 2698 provides a comprehensive explanation of the Two Rate Three Colour Marker algorithm, which is used to mark packets.
+Packet Loss (RFC 2680) is a metric used to measure the delay in round-trip time for the Internet Protocol Performance Monitoring (IPPM).
+
+Definition: Packet loss refers to the proportion of transmitted packets that fail to reach their intended destination.
+RFC 2680 offers a metric for measuring the round-trip latency and also addresses the issue of packet loss in performance monitoring.
+Packet Delay (RFC 2679) is a metric used to measure the delay of a packet in one direction in the context of Internet Protocol Performance Metrics (IPPM).
+
+Definition: Latency refers to the duration it takes for a packet to traverse from its origin to its destination.
+RFC 2679 establishes metrics for measuring the latency characteristics of a network.
+These Key Performance Indicators (KPIs) aid network administrators and engineers in evaluating and enhancing the efficiency of networks, guaranteeing dependable and effective data transfer. The RFCs mentioned establish standards and procedures for implementing particular parts of network measurement.
+
 
 
 In a manner analogous to that of the TWAMP (TWO WAY ACTIVE MEASUREMENT PROTOCOL), the OWAMP calls for the utilization of a control algorithm. This algorithm is responsible for the initiation of the transmission of packets between hosts, which clarifies the precise timing of the measurement. There are a few key areas in which our project, which we refer to as ONE WAY PASSIVE MEASUREMENT PROTOCOL (OWPMP), diverges from OWAMP. The absence of a control algorithm that triggers the transfer of data between the source host and the destination host is the aspect that stands out as being the most significant deviation. This also contibutes to a whole host of issues that initially were not accounted for, and to combat such issues[1], timestamps for Reception and Transmission have been introduced to the IP MO (measurremnt option) as well as a packet identifier in the form of a 16 bit UID counter.
@@ -24,7 +65,111 @@ the data are fed to the instance upon initialisation, throwing exceptions when r
 
  
 
+##############################
+##############################
 
+**Internship Report: Siemens Mobility AG**
+
+**1. Introduction and Onboarding:**
+
+    *Include -> [siemens and thier goal]*
+
+   During my initial week at Siemens Mobility AG, I took part in an orientation programme known as "onboarding." Throughout this duration, I acquainted myself with the business premises, the regulations of the company, my colleagues, and my assigned workstation. I received comprehensive guidance on the appropriate individuals to approach and the specific locations to visit for certain inquiries. Furthermore, I was given a work computer with the responsibility of configuring my credentials to get Local Admin Rights, as well as establishing a developer environment for the IXL project. I was additionally entrusted with the task of independently configuring the system. Due to issues in the onboarding method, the entire process took longer than anticipated, resulting in a one-week delay in completing the aforementioned requirements, which included the setup of my work station. However, by the end of the first week, I managed to successfully access the essential software necessary for daily tasks, including email, the company portal, and the Siemens code repository. This indicated a partial success.
+
+
+I received my initial task shortly after the commencement of the second week. I had to acquaint myself with the theoretical principles that control the framework for developing the fundamental measuring procedures. This theory comprises several RFC entries (request for comment) made by the IEFT community. RFC 791, RFC 4656, RFC 2679, RFC 2680, RFC 5136, and RFC 2698 are notable entries due to their importance. These include specifications for IP, a protocol for one-way active measurement, packet delay and loss, IP network capacity, and a two-rate three-color marker. Several entries in this collection offer multiple methods for actively measuring and monitoring network traffic. However, it is important to consider certain limitations that exist at different network layers. When implementing these methods, as outlined in the RFCs, it is important to consider the constraints specific to that layer, as well as the strategies employed to overcome these challenges. By assessing these key performance indicators (KPIs), we can ascertain the efficiency and effectiveness of the network.
+
+
+**2. Assignment and Theoretical Framework:**
+   In the second week, I delved into my first assignment, focusing on the theoretical framework governing baseline measurement techniques. This framework, rooted in RFC entries from the IEFT community, included crucial documents such as RFC 791 (IP Specification), RFC 4656 (One Way Active Measurement Protocol), RFC 2679 (One Way Packet Delay), RFC 2680 (One Way Packet Loss), RFC 5136 (IP Network Capacity), and RFC 2698 (Two Rate Three Color Marker).
+
+**3. Understanding IP and Network Basics:**
+   In order to fully grasp the theoretical framework, a solid comprehension of Internet Protocol (IP) and the foundational principles of networks was essential. Internet Protocol (IP) operates at the network layer of the OSI model and is responsible for addressing, packet switching, and routing. IPv4 and IPv6, the primary versions of the Internet Protocol (IP), utilise distinct numerical identifiers called IP addresses to distinguish between devices.
+
+    The Internet Protocol (IP) is a crucial communication technology that enables the transmission of data between interconnected networks. It functions at the network layer of the Open Systems Interconnection (OSI) paradigm and has the task of managing the addressing and routing of data packets. Their responsibility lies in guaranteeing the successful transmission of data packets to their designated destination across networks.
+
+    Addressing is a fundamental aspect of Internet Protocol (IP), which involves the use of distinct numerical identities called IP addresses to distinguish devices inside a network. The Internet Protocol (IP) has several iterations, with IPv4 and IPv6 being the most notable.
+
+    The Internet Protocol (IP) facilitates the practise of packet switching, which entails breaking down data into smaller units called packets to enable efficient transmission. Every packet contains both data and control information, as well as the Internet Protocol addresses of the source and destination.
+
+    Routing: Internet Protocol routers utilise routing tables to ascertain the optimal path for transmitting packets. Data can traverse several networks to reach its intended destination.
+
+    Request for Comments 791 (RFC 791), also referred to as the "Internet Protocol - DARPA Internet Programme Protocol Specification," is a crucial document that outlines the requirements for Internet Protocol version 4 (IPv4). The document, issued in September 1981, details the constituents of IPv4 packets and the protocols governing address distribution, data routing, and data fragmentation for Internet transmission.
+
+    RFC 791 specifies several essential components, which include:
+
+    The composition of an Internet Protocol (IP) packet is determined by the packet format, encompassing the header fields responsible for addressing, specifying the type of service provided by the packet, its duration of activity, and the protocol employed.
+
+    This article discusses the format of IPv4 addresses and its use in identifying devices.
+
+    Fragmentation and reassembly is a technique used to divide big packets into smaller components during transmission and then reconstruct them at their destination.
+
+    Network measurement is the act of quantifying the operational capabilities and features of a network. The importance of evaluating network performance led to an exploration of Key Performance Indicators (KPIs).
+     Concepts such as Data Rate, Color Marker (RFC 2698), Packet Loss (RFC 2680), and Packet Delay (RFC 2679) were examined. These KPIs play a crucial role in network administrators and engineers' efforts to enhance efficiency and guarantee reliable data transfer.
+
+        **4. Key Performance Indicators (KPIs):**
+  
+        The data rate is a crucial metric used to evaluate performance.
+
+        Bandwidth is the term used to describe the rate at which data is transmitted or communicated over a network.
+        Citing RFC 791: RFC 791 establishes the structure for data transport, while it does not expressly specify the transmission rate.
+        The Colour Marker mechanism (specified in RFC 2698 - A Two Rate Three Colour Marker) is used to label packets based on their traffic characteristics.
+
+        Traffic policing is a technique that classifies packets into three specific colours, namely green, yellow, and red, based on their level of adherence to predetermined rates.
+        RFC 2698 offers a comprehensive elucidation of the Two Rate Three Colour Marker algorithm. This approach is employed to annotate transmission packets.
+        The statistic called Packet Loss (RFC 2680) is used in Internet Protocol Performance Monitoring (IPPM) to assess the delay in round-trip time caused by packet loss.
+
+        Packet loss is the proportion of data packets that are transmitted but fail to reach their intended destination.
+        RFC 2680 not only tackles the issue of packet loss in performance monitoring but also offers a metric for quantifying the round-trip latency.
+        Packet Delay, sometimes referred to as RFC 2679, is a metric used in the field of Internet Protocol Performance Metrics (IPPM) to quantify the time delay experienced by a packet as it travels in a single direction.
+
+        Latency (Packet Delay) is the duration it takes for a packet to move from its source to its destination without interruption.
+        RFC 2679 outlines the creation of metrics that can be utilised for quantifying the latency attributes of a network.
+        The Key Performance Indicators (KPIs) aid network managers and engineers in assessing and enhancing network efficiency, guaranteeing reliable and efficient data delivery. Specific elements of network measurement are executed in accordance with the standards and procedures set forth by the RFCs that were previously mentioned.
+
+**5. Introduction to OWAMP and OWPMP:**
+**5. Overview of TWAMP, OWAMP, and OWPMP:**
+
+When examining measurement protocols, it is essential to comprehend the current array of protocols that already exist. In this domain, TWO WAY ACTIVE MEASUREMENT PROTOCOL (TWAMP) and ONE WAY ACTIVE MEASUREMENT PROTOCOL (OWAMP) are two well-known protocols that are used as standards.
+
+The Two Way Active Measurement Protocol (TWAMP) is a communication protocol.
+
+TWAMP is a standardised protocol specifically created for the purpose of measuring network performance in both directions. The main objective is to evaluate the level of communication between two endpoints by initiating the transmission of test packets in both directions. The distinguishing characteristic of TWAMP is its inherent bidirectional nature, wherein both the sender and receiver actively engage in the measurement process.
+
+*Key Characteristics of TWAMP:* 
+- **Bidirectional Measurement:** TWAMP actively measures performance in both the upstream and downstream directions.
+- **Control Algorithm:** TWAMP utilises a control algorithm to achieve synchronisation of packet transmission timing between the two hosts.
+- **time Precision:** The methodology guarantees meticulous time synchronisation to achieve precise measurement accuracy.
+
+The One Way Active Measurement Protocol (OWAMP) is a standardised protocol used for conducting active measurements in a unidirectional manner.
+
+On the other hand, OWAMP is specifically developed to monitor network performance in one direction alone. OWAMP is distinct from TWAMP as it exclusively concentrates on the transmission of packets from the sender to the receiver. This protocol enables a simpler implementation, but it presents certain difficulties because it lacks a control method to coordinate the timing of packet delivery.
+
+*Key Characteristics of OWAMP:*
+- **Unidirectional Measurement:** OWAMP exclusively evaluates performance in one direction, usually from the transmitter to the receiver.
+- **Simplicity:** OWAMP streamlines the measurement procedure by eliminating the requirement for a control algorithm that coordinates packet transmission.
+
+The One Way Passive Measurement Protocol (OWPMP) is a standardised method for collecting data in a unidirectional manner.
+
+Our project develops the One Way Passive Measurement Protocol (OWPMP), which builds upon the groundwork established by TWAMP and OWAMP. This protocol specifically tackles the difficulties posed by OWAMP's one-way method. OWPMP differs from TWAMP in several key ways. It does not include the control method, but instead introduces timestamps for Reception and Transmission. Additionally, it incorporates a 16-bit UID counter as a packet identification.
+
+*Key Characteristics of OWPMP:* - **Unidirectional Measurement:** OWPMP evaluates performance in one direction, similar to OWAMP, which increases simplicity.
+- **Timestamps and UID Counter:** OWPMP incorporates timestamps to ensure accurate measurement timing and a UID counter to identify packets.
+- **Autonomy:** OWPMP seeks to autonomously monitor and assess the state and efficiency of network operations, specifically in relation to decentralised railway interlocking systems.
+
+To summarise, TWAMP and OWAMP are active measuring protocols that have unique characteristics. OWPMP, in the context of Siemens Mobility AG, expands upon existing protocols by solving specific issues and requirements in a creative manner.
+
+
+
+
+**6. Challenges and Analysis:**
+   Acknowledging potential issues, particularly in the context of decentralized railway interlocking, the report outlines the purpose of implementing OWPMP. A systematic analysis, including the handling of issues, is detailed, emphasizing the independent tracking and monitoring of network health/performance based on Service Level Agreements (SLA).
+
+**7. Object-Oriented Design and Implementation:**
+   Realizing the Passive Measurement Protocol required an object-oriented approach. Three core classes were established: Measurement Interface, Measurement (based on Measurement Interface), and Core Data. These classes formed the foundation for systematic metric calculation and data representation.
+
+**8. Conclusion and Future Directions:**
+   Concluding the report, the successful onboarding, theoretical grounding, and practical implementation of measurement protocols are highlighted. The report provides a foundation for future developments, improvements, and further exploration in the dynamic field of network measurement at Siemens Mobility AG.
 
 
 
