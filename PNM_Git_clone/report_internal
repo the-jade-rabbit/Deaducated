@@ -208,7 +208,38 @@ To summarise, TWAMP and OWAMP are active measuring protocols that have unique ch
 
 
 **6. Challenges and Analysis:**
-   Acknowledging potential issues, particularly in the context of decentralized railway interlocking, the report outlines the purpose of implementing OWPMP. A systematic analysis, including the handling of issues, is detailed, emphasizing the independent tracking and monitoring of network health/performance based on Service Level Agreements (SLA).
+   Acknowledging potential issues, particularly in the context of decentralized railway interlocking, the report outlines the purpose of implementing OWPMP. A systematic analysis, including the handling of issues, is detailed, emphasizing the independent tracking and monitoring of network health/performance based on Service Level Agreements (SLA). 
+
+   One significant issue i faced was with the float point error. when dealing wiht time stamps in nanoseconds, float point errors may arrise during calculation due to the compiler padding decimal numbers (floats) to arbitrary ammounts determined by the processor. During implemntation the decimal library was used to circumvent float point errors that causing inaccuracies and test faliures.
+
+   If applying these measuremnts on captured ethrnet frames, the start adn end of trasnmision is know is some way via the start and end of file. However on live networks, certain limitations of the protocol present themselves.
+
+   while all measurements can be conducted on the receiver's side (Destination host), some measurements cannot be done on the Source host due to abscence of a monitoring algorithim to initiate trasnmission. For example, it is impossible to measure packet loss on the trasnmitters side (source host) due to lack of confirmation of packets received by the Destination host, including the abscence of receive time-stamps on the ip packet.
+
+   On the subject of packet loss, the overall loss ratio will not always be accurate on super fast links, when huge losses occur. it will be impossible to know how many times the UID counter wraps in such an event therefore The total number of packets sent at a given interval will be unknown, as number of packets received/flagged as lost may be inaccurate.
+
+   Data rate inaccuracuies can occur becasue there is no means to tell by which the last packet has been received. as opposed ot active measurement, a transmission control monitor tackles this problem. As a result, the data rates accross a live network may appear to fluctuate. It may be beneficial to simply take the average speed of a measuremnt interval. On the oter hand, huge fluctuatuons in data rate may also indicate significant packet loss during an interval.
+
+   The absence of a montitoring protocol, also presents a problem bcause the there is noting to make sure that the Destination and source clocks are accurately in sync. should one machine have a time drift (skew) significantly large, measuremnt inaccuracies wiiht loss and delay may arrise.
+
+
+
+
+Acknowledging Challenges and Implementing Solutions:
+
+In the context of decentralized railway interlocking, the report meticulously outlines the purpose behind adopting the One Way Passive Measurement Protocol (OWPMP). A comprehensive systematic analysis is presented, focusing on adeptly addressing potential challenges and underscoring the paramount goal of independent tracking and monitoring of network health/performance, aligning with Service Level Agreements (SLA).
+
+A noteworthy challenge encountered pertained to floating-point errors. When handling nanosecond timestamps, these errors could arise during calculations due to the compiler padding decimal numbers (floats) arbitrarily, determined by the processor. To mitigate this, the implementation incorporated the Decimal library, successfully circumventing floating-point errors that previously led to inaccuracies and test failures.
+
+When applying these measurements to captured Ethernet frames, the initiation and termination of transmission are discernible through the start and end of the file. However, in live networks, specific limitations of the protocol become apparent.
+
+While all measurements can be executed on the receiver's side (Destination host), certain measurements face constraints on the Source host due to the absence of a monitoring algorithm to initiate transmission. For instance, measuring packet loss on the transmitter's side (source host) proves impossible due to the lack of confirmation of packets received by the Destination host, compounded by the absence of receive timestamps on the IP packet.
+
+Concerning packet loss, the overall loss ratio may not always be accurate on super-fast links during substantial losses. It becomes impossible to determine how many times the UID counter wraps in such instances, rendering the total number of packets sent within a given interval unknown, as the count of received/flagged packets may be inaccurate.
+
+Data rate inaccuracies may occur due to the absence of means to determine when the last packet has been received. In contrast to active measurements, where a transmission control monitor addresses this issue, passive measurement protocols encounter challenges. Consequently, data rates across a live network may appear to fluctuate. Opting to calculate the average speed of a measurement interval may provide a beneficial perspective. However, substantial fluctuations in data rates may indicate significant packet loss during an interval.
+
+The absence of a monitoring protocol also poses a concern as there is nothing ensuring that the Destination and source clocks are accurately in sync. Should one machine experience a significant time drift (skew), measurement inaccuracies in loss and delay may arise. Addressing this synchronization challenge becomes imperative for maintaining the precision of measurements.
 
 **7. Object-Oriented Design and Implementation:**
    Realizing the Passive Measurement Protocol required an object-oriented approach. Three core classes were established: Measurement Interface, Measurement (based on Measurement Interface), and Core Data. These classes formed the foundation for systematic metric calculation and data representation.
